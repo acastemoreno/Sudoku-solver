@@ -20,7 +20,7 @@ blocks([A,B,C|Bs1], [D,E,F|Bs2], [G,H,I|Bs3]) :-     % 3 primeros elementos de f
 
 %http://stackoverflow.com/questions/25467090/how-to-run-swi-prolog-from-the-command-line
 %http://www.webber-labs.com/mpl/lectures/
-%Hacer codigo ejecutable swipl -o sudokuexe -g main -c sudoku.pl sin prolog instalado, ejecutando con ./sudoku.pl 8
+%Hacer codigo ejecutable swipl -o myexe -g hello -c hello.pl sin prolog instalado, ejecutando con ./sudoku.pl 8
 %Ejecutar codigo prolog con swi instalado: ./sudoku.pl 8
 
 main :-
