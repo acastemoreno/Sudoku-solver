@@ -1,0 +1,23 @@
+{
+  "name": "sudoku-solver",
+  "version": "1.0.0",
+  "description": "sudoku solver in prolog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acastemoreno/Sudoku-solver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acastemoreno/Sudoku-solver/issues"
+  },
+  "homepage": "https://github.com/acastemoreno/Sudoku-solver#readme",
+  "dependencies": {
+    "express": "^4.13.1",
+    "shelljs": "^0.5.1"
+  }
+}
