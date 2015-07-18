@@ -21,13 +21,36 @@ blocks([A,B,C|Bs1], [D,E,F|Bs2], [G,H,I|Bs3]) :-     % 3 primeros elementos de f
 %http://stackoverflow.com/questions/25467090/how-to-run-swi-prolog-from-the-command-line
 %http://www.webber-labs.com/mpl/lectures/
 %Hacer codigo ejecutable swipl -o sudokuexe -g main -c sudoku.pl sin prolog instalado, ejecutando con ./sudoku.pl 8
-%Ejecutar codigo prolog con swi instalado: ./sudoku.pl 8
+%Ejecutar codigo prolog con swi instalado: ./sudoku.pl 8,_,_,_,_,_,_,_,_ _,_,3,6,_,_,_,_,_ _,7,_,_,9,_,2,_,_ _,5,_,_,_,7,_,_,_ _,_,_,_,4,5,7,_,_ _,_,_,1,_,_,_,3,_ _,_,1,_,_,_,_,6,8 _,_,8,5,_,_,_,1,_ _,9,_,_,_,_,4,_,_
+
+atnum(Argv,L):-
+(Argv=='_'->term_to_atom(L,Argv);atom_number(Argv,L))
+.
+
+listnumterm([],[]).
+listnumterm([Listatomo|Listatomt],[Listno|Listnt]):-
+atnum(Listatomo,Listno),
+listnumterm(Listatomt,Listnt)
+.
+
+
+olista([Argv],Elem):-
+atomic_list_concat(Listatom,',',Argv),
+listnumterm(Listatom,Elem)
+.
+
+tlista([],[]).
+tlista([Argvo|Argvt],[Tlistao|Tlistat]):-
+olista([Argvo],Tlistao),
+tlista(Argvt,Tlistat)
+.
+
 
 main :-
- current_prolog_flag(argv, [Argv]),
- atom_number(Argv, Asd),
- Puzzle = [[Asd,_,_,_,_,_,_,_,_], [_,_,3,6,_,_,_,_,_], [_,7,_,_,9,_,2,_,_], [_,5,_,_,_,7,_,_,_], [_,_,_,_,4,5,7,_,_], [_,_,_,1,_,_,_,3,_], [_,_,1,_,_,_,_,6,8], [_,_,8,5,_,_,_,1,_], [_,9,_,_,_,_,4,_,_] ], 
- Puzzle = [A,B,C,D,E,F,G,H,I], sudoku([A,B,C,D,E,F,G,H,I]),
+ current_prolog_flag(argv, Argv),
+ tlista(Argv,Puzzle),
+ Puzzle = [A,B,C,D,E,F,G,H,I],
+ sudoku([A,B,C,D,E,F,G,H,I]),
  format('[~w,~w,~w,~w,~w,~w,~w,~w,~w]', Puzzle),
  halt.
 
